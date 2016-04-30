@@ -258,6 +258,26 @@ describe('expect', function () {
     err(function () {
       expect([ 1, 2, 3, 4 ]).to.not.have.length.of.at.least(4, 'blah');
     }, "blah: expected [ 1, 2, 3, 4 ] to have a length below 4");
+
+    err(function () {
+      expect(null).to.be.at.least(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.be.at.least(null, 'blah');
+    }, "the argument to least must be a number");
+
+    err(function () {
+      expect(null).to.not.be.at.least(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.not.be.at.least(null, 'blah');
+    }, "the argument to least must be a number");
+
+    err(function () {
+      expect(1).to.have.length.at.least(0, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('below(n)', function(){

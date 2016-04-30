@@ -267,6 +267,22 @@ describe('should', function() {
     err(function(){
       ({foo: 1}).should.have.length.of.at.least(3, 'blah');
     }, "blah: expected { foo: 1 } to have a property 'length'");
+
+    err(function () {
+      ('string').should.be.at.least(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.be.at.least(null, 'blah');
+    }, "the argument to least must be a number");
+
+    err(function () {
+      ('string').should.not.be.at.least(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.not.be.at.least(null, 'blah');
+    }, "the argument to least must be a number");
   });
 
   it('below(n)', function(){

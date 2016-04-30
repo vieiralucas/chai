@@ -1218,6 +1218,14 @@ describe('assert', function () {
     err(function() {
       assert.isAtLeast(1, 3);
     }, 'expected 1 to be at least 3');
+
+    err(function() {
+      assert.isAtLeast(null, 3);
+    }, 'expected null to be a number');
+
+    err(function() {
+      assert.isAtLeast(1, null);
+    }, 'the argument to least must be a number');
   });
 
   it('below', function() {
