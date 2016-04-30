@@ -210,6 +210,26 @@ describe('expect', function () {
     err(function () {
       expect([ 1, 2, 3 ]).to.have.length.above(4, 'blah');
     }, "blah: expected [ 1, 2, 3 ] to have a length above 4 but got 3");
+
+    err(function () {
+      expect(null).to.be.above(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.be.above(null, 'blah');
+    }, "the argument to above must be a number");
+
+    err(function () {
+      expect(null).to.not.be.above(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.not.be.above(null, 'blah');
+    }, "the argument to above must be a number");
+
+    err(function () {
+      expect(1).to.have.length.above(0, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('least(n)', function(){

@@ -1201,6 +1201,14 @@ describe('assert', function () {
     err(function() {
       assert.isAbove(1, 1);
     }, 'expected 1 to be above 1');
+
+    err(function() {
+      assert.isAbove(null, 1);
+    }, 'expected null to be a number');
+
+    err(function() {
+      assert.isAbove(1, null);
+    }, 'the argument to above must be a number');
   });
 
   it('atLeast', function() {
