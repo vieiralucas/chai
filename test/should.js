@@ -339,6 +339,26 @@ describe('should', function() {
     err(function(){
       ({foo: 1}).should.have.length.of.at.most(3, 'blah');
     }, "blah: expected { foo: 1 } to have a property 'length'");
+
+    err(function () {
+      ('string').should.be.at.most(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.be.at.most(null, 'blah');
+    }, "the argument to most must be a number");
+
+    err(function () {
+      ('string').should.not.be.at.most(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.not.be.at.most(null, 'blah');
+    }, "the argument to most must be a number");
+
+    err(function () {
+      (1).should.have.length.of.at.most(0, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('match(regexp)', function(){

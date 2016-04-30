@@ -352,6 +352,26 @@ describe('expect', function () {
     err(function () {
       expect([ 1, 2 ]).to.not.have.length.of.at.most(2, 'blah');
     }, "blah: expected [ 1, 2 ] to have a length above 2");
+
+    err(function () {
+      expect(null).to.be.at.most(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.be.at.most(null, 'blah');
+    }, "the argument to most must be a number");
+
+    err(function () {
+      expect(null).to.not.be.at.most(0, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.not.be.at.most(null, 'blah');
+    }, "the argument to most must be a number");
+
+    err(function () {
+      expect(1).to.have.length.of.at.most(0, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('match(regexp)', function(){

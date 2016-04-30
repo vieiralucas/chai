@@ -1255,6 +1255,14 @@ describe('assert', function () {
     err(function() {
       assert.isAtMost(3, 1);
     }, 'expected 3 to be at most 1');
+
+    err(function() {
+      assert.isAtMost(null, 1);
+    }, 'expected null to be a number');
+
+    err(function() {
+      assert.isAtMost(3, null);
+    }, 'the argument to most must be a number');
   });
 
   it('memberDeepEquals', function() {
