@@ -157,6 +157,34 @@ describe('expect', function () {
     err(function () {
       expect([ 1, 2, 3 ]).to.have.length.within(5,7, 'blah');
     }, "blah: expected [ 1, 2, 3 ] to have a length within 5..7");
+
+    err(function () {
+      expect(null).to.be.within(0, 1, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.be.within(null, 1, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      expect(1).to.be.within(0, null, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      expect(null).to.not.be.within(0, 1, 'blah');
+    }, "blah: expected null to be a number");
+
+    err(function () {
+      expect(1).to.not.be.within(null, 1, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      expect(1).to.not.be.within(0, null, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      expect(1).to.have.length.within(5,7, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('above(n)', function(){

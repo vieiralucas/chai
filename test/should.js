@@ -183,6 +183,34 @@ describe('should', function() {
     err(function(){
       ({ foo: 1 }).should.have.length.within(50,100, 'blah');
     }, "blah: expected { foo: 1 } to have a property 'length'");
+
+    err(function () {
+      ('string').should.be.within(0, 1, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.be.within(null, 1, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      (1).should.be.within(0, null, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      ('string').should.not.be.within(0, 1, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.not.be.within(null, 1, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      (1).should.not.be.within(0, null, 'blah');
+    }, "the arguments to within must be numbers");
+
+    err(function () {
+      (1).should.have.length.within(5,7, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('above(n)', function(){
