@@ -302,6 +302,26 @@ describe('should', function() {
     err(function(){
       ({foo: 1}).should.have.length.below(3, 'blah');
     }, "blah: expected { foo: 1 } to have a property 'length'");
+
+    err(function () {
+      ('string').should.be.below(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.be.below(null, 'blah');
+    }, "the argument to below must be a number");
+
+    err(function () {
+      ('string').should.not.be.below(0, 'blah');
+    }, "blah: expected 'string' to be a number");
+
+    err(function () {
+      (1).should.not.be.below(null, 'blah');
+    }, "the argument to below must be a number");
+
+    err(function () {
+      (1).should.have.length.below(0, 'blah');
+    }, "blah: expected 1 to have a property 'length'");
   });
 
   it('most(n)', function(){
