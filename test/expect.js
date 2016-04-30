@@ -1473,6 +1473,22 @@ describe('expect', function () {
     expect(popFn).to.decrease(lenFn).but.not.by(2);
     expect(nFn).to.not.decrease(lenFn);
     expect(pFn).to.not.decrease(lenFn);
+
+    err(function() {
+      expect(incFn).to.increase(obj, 'value').by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      expect(incFn).to.increase(obj, 'value').but.not.by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      expect(decFn).to.decrease(obj, 'value').by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      expect(decFn).to.decrease(obj, 'value').but.not.by(null);
+    }, 'the argument to by must be a number');
   });
 
   it('extensible', function() {

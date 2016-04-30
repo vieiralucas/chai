@@ -1320,6 +1320,22 @@ describe('should', function() {
 
     popFn.should.decrease(lenFn).by(1);
     popFn.should.decrease(lenFn).but.not.by(2);
+
+    err(function() {
+      (incFn).should.increase(obj, 'value').by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      (incFn).should.increase(obj, 'value').but.not.by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      (decFn).should.decrease(obj, 'value').by(null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      (decFn).should.decrease(obj, 'value').but.not.by(null);
+    }, 'the argument to by must be a number');
   });
 
   it('extensible', function() {

@@ -1347,6 +1347,22 @@ describe('assert', function () {
     assert.doesNotIncrease(popFn, lenFn);
     assert.increasesBy(pFn, lenFn, 1);
     assert.increasesButNotBy(pFn, lenFn, 2);
+
+    err(function() {
+      assert.increasesBy(incFn, obj, 'value', null)
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      assert.decreasesBy(popFn, lenFn, null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      assert.decreasesBy(decFn, obj, 'value', null);
+    }, 'the argument to by must be a number');
+
+    err(function() {
+      assert.decreasesButNotBy(decFn, obj, 'value', null);
+    }, 'the argument to by must be a number');
   });
 
   it('isExtensible / extensible', function() {
